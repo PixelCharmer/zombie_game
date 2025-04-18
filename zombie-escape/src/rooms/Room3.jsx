@@ -4,7 +4,7 @@ import background from '../assets/tunnelsystem.png';
 
 export default function Room3() {
     const navigate = useNavigate();
-    const [selectedTunnel, setSelectedTunnel] = useState(null);
+    const [selectedTunnel, setSelectedTunnel] = useState('');
     const [submitted, setSubmitted] = useState(false);
     const [correct, setCorrect] = useState(false);
     const [blacklightActive, setBlacklightActive] = useState(false);
@@ -20,7 +20,7 @@ export default function Room3() {
     };
 
     const handleReset = () => {
-        setSelectedTunnel(null);
+        setSelectedTunnel('');
         setSubmitted(false);
         setCorrect(false);
         setBlacklightActive(false);
@@ -97,6 +97,7 @@ export default function Room3() {
                                         padding: '1rem',
                                         fontSize: '0.85rem',
                                         border: '1px solid #00ffff',
+                                        zIndex: 1,
                                     }}
                                 >
                                     {hardHints[tunnel]}
@@ -122,7 +123,7 @@ export default function Room3() {
                 }}
             >
                 <div className="select is-medium">
-                    <select value={selectedTunnel || ''} onChange={(e) => setSelectedTunnel(e.target.value)}>
+                    <select value={selectedTunnel} onChange={(e) => setSelectedTunnel(e.target.value)}>
                         <option value="" disabled>Select a Tunnel</option>
                         <option value="Tunnel 1">Tunnel 1</option>
                         <option value="Tunnel 2">Tunnel 2</option>
@@ -147,12 +148,12 @@ export default function Room3() {
             </div>
 
             <style>{`
-        @keyframes pulse {
-          0% { box-shadow: 0 0 5px rgba(255,255,255,0.2); }
-          50% { box-shadow: 0 0 15px rgba(255,255,255,0.6); }
-          100% { box-shadow: 0 0 5px rgba(255,255,255,0.2); }
-        }
-      `}</style>
+                @keyframes pulse {
+                  0% { box-shadow: 0 0 5px rgba(255,255,255,0.2); }
+                  50% { box-shadow: 0 0 15px rgba(255,255,255,0.6); }
+                  100% { box-shadow: 0 0 5px rgba(255,255,255,0.2); }
+                }
+            `}</style>
         </div>
     );
 }

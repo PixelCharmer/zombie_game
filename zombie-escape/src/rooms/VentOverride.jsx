@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom';
 
 export default function VentOverride() {
     const navigate = useNavigate();
-    const [valveA, setValveA] = useState(50);
-    const [valveB, setValveB] = useState(50);
-    const [valveC, setValveC] = useState(50);
+    const [valveA, setValveA] = useState(0);
+    const [valveB, setValveB] = useState(0);
+    const [valveC, setValveC] = useState(0);
     const [feedback, setFeedback] = useState('');
     const [attempts, setAttempts] = useState(0);
 
