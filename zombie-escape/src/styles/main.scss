@@ -1,0 +1,54 @@
+// src/styles/main.scss
+@import url('https://fonts.googleapis.com/css2?family=Kalnia+Glaze:wght@500&display=swap');
+
+
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.room1-background {
+    position: relative;
+}
+
+.button {
+    font-weight: bold;
+}
+
+.button.is-skeleton {
+    background-color: transparent;
+    border: 2px dashed #3273dc;
+    color: #3273dc;
+
+    &:hover {
+        background-color: #3273dc20;
+        color: #3273dc;
+    }
+}
+
+.inventory-slot {
+    border: 1px solid #999;
+    padding: 4px;
+    background: #1e1e1e;
+    border-radius: 4px;
+}
+
+@keyframes pulseLights {
+    0% {
+        filter: brightness(1);
+    }
+
+    50% {
+        filter: brightness(0.6);
+    }
+
+    100% {
+        filter: brightness(1);
+    }
+}
+
+.room2-intro-background {
+    animation: pulseLights 4s ease-in-out infinite;
+}
+
