@@ -14,11 +14,10 @@ const Room1 = () => {
     const [messageIndex, setMessageIndex] = useState(0);
 
     const hintMessages = [
-        "The code is not 1234.",
-        "Ignore the chatter, only the last words matter.",
-        "Forget everything but the truth in static.",
-        "Listen closely.",
-        "Red. October. Blue. Seven."
+        "The code is not 1234",
+        "Count the letter placement",
+        "Letters need numbers & numbers stay the same",
+        "Indigo - 3 - Blue - 7"
     ];
 
     const playNextHint = () => {
@@ -91,13 +90,13 @@ const Room1 = () => {
                     position: "absolute",
                     top: "370px",
                     left: "200px",
-                    color: "white",
-                    fontSize: "0.9rem",
-                    width: "280px",
+                    color: "#f7dcf0",
+                    fontSize: "1.0rem",
+                    width: "400px",
                     backgroundColor: "rgba(0,0,0,0.5)",
                     padding: "8px",
                     borderRadius: "4px",
-                    fontFamily: "'Kalnia Glaze', serif", // 👈 Apply here
+                    fontFamily: `"Lacquer", system-ui`, // ✅ fixed here
                 }}
             >
                 {messages.map((msg, idx) => (
@@ -119,7 +118,7 @@ const Room1 = () => {
                     <div className="modal-content">
                         <div className="box has-background-dark has-text-light p-5">
                             <Keypad
-                                solution="7259"
+                                solution="9327"
                                 maxAttempts={3}
                                 onSuccess={() => {
                                     navigate("/room2");

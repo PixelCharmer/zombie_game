@@ -109,10 +109,10 @@ export default function Room2() {
               <div style={{ position: 'absolute', top: '25%', right: '18%', width: '350px', background: 'rgba(0,0,0,0.75);opacity:0.6', padding: '1rem', borderRadius: '5px', border: '1px dashed #ff4444', fontSize: '0.85rem' }}>
           <strong>Security Monitor Feed</strong>
           <ul style={{ marginTop: '0.5rem' }}>
-            <li>1. Someone escaping via roof access (female)</li>
-            <li>2. A body in the vents with a badge: “Novak”</li>
-            <li>3. Lab B covered in blood</li>
-            <li>4. A handwritten note: “I made it to Sector C!”</li>
+            <li>She escaped through the roof (female)</li>
+            <li>The Corporals lab is covered in blood</li>
+            <li>The nurse was always at risk of turning</li>
+            <li>A body in the vents with a badge: “Novak”</li>
           </ul>
         </div>
       )}
