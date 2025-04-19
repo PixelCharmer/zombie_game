@@ -13,7 +13,7 @@ export default function Room3() {
 
     const handleSubmit = () => {
         setSubmitted(true);
-        if (selectedTunnel === 'Tunnel 3' && scrambler !== 2) {
+        if (selectedTunnel === 'Tunnel 3') {
             setCorrect(true);
             setTimeout(() => navigate('/ventoverride'), 2500);
         }
@@ -29,11 +29,9 @@ export default function Room3() {
     };
 
     const hardHints = {
-        'Tunnel 1': 'Muffled steps echo... but then stop.',
+        'Tunnel 1': 'Only through the darkness can you escape',
         'Tunnel 2': 'Scratches form circles. A dead end, or a trap?',
-        'Tunnel 3': scrambler === 2
-            ? 'Nothing visible... try again?'
-            : 'You see faint glowing words: “Crawl left and hold your breath.”'
+        'Tunnel 3': 'Crawl and hold your breath.'
     };
 
     return (
@@ -81,8 +79,6 @@ export default function Room3() {
                                     width: '120px',
                                     height: '200px',
                                     borderRadius: '10px',
-                                    background: `rgba(${100 + idx * 50},${50 + idx * 30},255,0.15)`,
-                                    animation: 'pulse 1.5s infinite',
                                     cursor: 'crosshair',
                                 }}
                             />

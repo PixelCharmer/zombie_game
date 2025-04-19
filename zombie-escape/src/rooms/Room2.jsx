@@ -80,7 +80,7 @@ export default function Room2() {
           <strong>🧩 Survivor Logs</strong>
           <ul style={{ marginTop: '0.5rem' }}>
             <li>• A doctor was sectored </li>
-            <li>• A military many was injured </li>
+            <li>• A military man was injured </li>
             <li>• A nurse got hungry </li>
             <li>• An agent went dark </li>
           </ul>
@@ -148,8 +148,8 @@ export default function Room2() {
             zIndex: 2,
           }}
         >
-          <h1 className="title is-4 has-text-success">🧪 Quarantine Puzzle</h1>
-          <p className="subtitle is-6">Match each survivor with their fate to unlock the antiviral key.</p>
+          <h1 className="title is-3 has-text-success">🧪 Quarantine Puzzle</h1>
+                  <p className="subtitle is-5 has-text-warning">Match each survivor with their fate to unlock the antiviral key.</p>
 
           {survivors.map((person) => (
             <div key={person} className="field">
@@ -176,6 +176,7 @@ export default function Room2() {
           <div className="buttons mt-4">
             <button className="button is-link" onClick={handleSubmit}>Submit</button>
             <button className="button is-light" onClick={resetPuzzle}>Reset</button>
+            <button className="button is-danger" onClick={() => setShowPuzzle(false)}>Close Puzzle</button> {/* NEW BUTTON */}
           </div>
 
           {submitted && success && (
