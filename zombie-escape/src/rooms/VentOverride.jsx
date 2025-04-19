@@ -17,9 +17,9 @@ export default function VentOverride() {
         setAttempts(attempts + 1);
         if (totalPressure === requiredPressure) {
             setFeedback('✅ Ventilation Override Unlocked!');
-            setTimeout(() => navigate('/room4intro'), 2500);
+            setTimeout(() => navigate('/room4intro'), 1500);
         } else {
-            setFeedback('❌ Incorrect pressure! Try again...');
+            setFeedback('The zombies can detect your scent now...');
         }
     };
 
@@ -34,7 +34,7 @@ export default function VentOverride() {
     const clues = {
         note: '📝 6X + 37 + 4Z = Safety threshold?',
         terminal: '⚠️ Pressure over 140 triggers purge!',
-        gauge: '🔧 Mid-range valve stability around 70 PSI'
+        gauge: '🔧 Mid-range valve stability around 40 PSI'
     };
 
     return (
@@ -143,7 +143,7 @@ export default function VentOverride() {
                             <input
                                 type="range"
                                 min="0"
-                                max="100"
+                                max="60"
                                 value={value}
                                 onChange={(e) => setter(Number(e.target.value))}
                                 style={{ width: '200px' }}

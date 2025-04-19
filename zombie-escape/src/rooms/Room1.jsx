@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import '../styles/main.scss';
 import background from '../assets/outpost_background.png';
-import transmitterImg from '../assets/transmitter.png';
 import Keypad from '../components/Keypad';
 import { useNavigate } from 'react-router-dom';
 
@@ -53,36 +52,33 @@ const Room1 = () => {
                 onClick={() => setShowPuzzle(true)}
                 style={{
                     position: 'absolute',
-                    top: '210px',
-                    right: '230px',
-                    width: '50px',
-                    height: '60px',
+                    top: '30vh',          // ✅ Relative to screen height
+                    right: '15vw',        // ✅ Relative to screen width
+                    width: '40px',
+                    height: '40px',
                     cursor: 'pointer',
+                    borderRadius: '12px',
+                    boxShadow: '0 0 20px rgba(0,255,255,0.2)',
+                    zIndex: 10
                 }}
                 title="Click terminal to activate"
-            ></div>
+            />
 
             {/* Broken Radio on the back table (scaled up 200%) */}
             <div
                 style={{
                     position: 'absolute',
-                    top: '260px',
+                    top: '280px',
                     left: '180px',
-                    width: '280px', // doubled from 90px
+                    width: '280px',
+                    height: '80px', // ✅ Add height to make it clickable
                     cursor: 'pointer',
+                    zIndex: 10, // ✅ Bring it to front just in case
+                    // backgroundColor: 'rgba(255,0,0,0.2)' // ✅ Optional for debugging visibility
                 }}
                 title="Click to hear static clues"
                 onClick={playNextHint}
-            >
-                <img
-                    src={transmitterImg}
-                    alt="Broken Radio"
-                    style={{
-                        width: '100%',
-                        filter: 'brightness(0.30)',
-                    }}
-                />
-            </div>
+            />
 
             {/* Display Radio Messages */}
             <div

@@ -66,13 +66,13 @@ export default function Room2() {
     >
       {/* Clue Hotspots */}
       <div onClick={() => setClue1(!clue1)} title="Wall Panel"
-        style={{ position: 'absolute', top: '65%', left: '15%', width: '20px', height: '20px', backgroundColor: 'dark red', borderRadius: '50%', cursor: 'pointer', boxShadow: '0 0 1px red' }} />
+        style={{ position: 'absolute', top: '65%', left: '15%', width: '20px', height: '20px', backgroundColor: 'dark red', borderRadius: '50%', cursor: 'pointer', boxShadow: '0 0 3px red' }} />
       <div onClick={() => setClue2(!clue2)} title="Graffiti"
               style={{ position: 'absolute', top: '58%', left: '52%', width: '20px', height: '20px', backgroundColor: 'dark red', borderRadius: '50%', cursor: 'pointer', boxShadow: '0 0 3px red' }} />
       <div onClick={() => setClue3(!clue3)} title="Touchscreen"
               style={{ position: 'absolute', top: '33%', right: '17%', width: '20px', height: '20px', backgroundColor: 'dark red', borderRadius: '50%', cursor: 'pointer', boxShadow: '0 0 10px red' }} />
       <div onClick={() => setClue4(!clue4)} title="Security Monitor"
-              style={{ position: 'absolute', top: '35%', left: '45%', width: '20px', height: '20px', backgroundColor: 'dark red', borderRadius: '50%', cursor: 'pointer', boxShadow: '0 0 10px black' }} />
+              style={{ position: 'absolute', top: '35%', left: '45%', width: '20px', height: '20px', backgroundColor: 'dark red', borderRadius: '50%', cursor: 'pointer', boxShadow: '0 0 2px gray' }} />
 
       {/* Clue Panels */}
       {clue1 && (
