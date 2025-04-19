@@ -14,10 +14,10 @@ const Room1 = () => {
     const [messageIndex, setMessageIndex] = useState(0);
 
     const hintMessages = [
-        "The code is not 1234",
-        "Count the letter placement",
+        "Ends are lies, the truth is always first",
+        "What number is that letter",
         "Letters need numbers & numbers stay the same",
-        "Indigo - 3 - Blue - 7"
+        "Indigo  3  Blue  7"
     ];
 
     const playNextHint = () => {
@@ -119,7 +119,7 @@ const Room1 = () => {
                         <div className="box has-background-dark has-text-light p-5">
                             <Keypad
                                 solution="9327"
-                                maxAttempts={3}
+                                maxAttempts={4}
                                 onSuccess={() => {
                                     navigate("/room2");
                                 }}
