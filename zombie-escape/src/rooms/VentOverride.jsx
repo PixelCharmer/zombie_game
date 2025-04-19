@@ -8,6 +8,7 @@ export default function VentOverride() {
     const [valveC, setValveC] = useState(0);
     const [feedback, setFeedback] = useState('');
     const [attempts, setAttempts] = useState(0);
+    const [clue, setClue] = useState(null);
 
     const requiredPressure = 130;
     const totalPressure = valveA + valveB + valveC;
@@ -20,7 +21,7 @@ export default function VentOverride() {
         } else {
             setFeedback('❌ Incorrect pressure! Try again...');
         }
-    }; // <-- ✅ this was missing
+    };
 
     const handleReset = () => {
         setValveA(0);
@@ -28,6 +29,12 @@ export default function VentOverride() {
         setValveC(0);
         setFeedback('');
         setAttempts(0);
+    };
+
+    const clues = {
+        note: '📝 6X + 37 + 4Z = Safety threshold?',
+        terminal: '⚠️ Pressure over 140 triggers purge!',
+        gauge: '🔧 Mid-range valve stability around 70 PSI'
     };
 
     return (
@@ -42,6 +49,7 @@ export default function VentOverride() {
                 flexDirection: 'column',
                 alignItems: 'center',
                 justifyContent: 'center',
+                position: 'relative'
             }}
         >
             <h1 className="title is-3 has-text-success">🔧 Ventilation Override</h1>
@@ -49,6 +57,81 @@ export default function VentOverride() {
                 Align the valves to change the flow of air
             </p>
 
+            {/* Hover Clue Zones */}
+            <div
+                onMouseEnter={() => setClue('note')}
+                onMouseLeave={() => setClue(null)}
+                style={{
+                    position: 'absolute',
+                    top: '10%',
+                    left: '10%',
+                    width: '30px',
+                    height: '30px',
+                    backgroundColor: 'rgba(255,255,0,0.1)',
+                    borderRadius: '50%',
+                    cursor: 'help',
+                    boxShadow: '0 0 8px yellow',
+                    animation: 'pulse 2s infinite',
+                }}
+            />
+            <div
+                onMouseEnter={() => setClue('terminal')}
+                onMouseLeave={() => setClue(null)}
+                style={{
+                    position: 'absolute',
+                    top: '20%',
+                    right: '10%',
+                    width: '30px',
+                    height: '30px',
+                    backgroundColor: 'rgba(0,255,255,0.1)',
+                    borderRadius: '50%',
+                    cursor: 'help',
+                    boxShadow: '0 0 8px cyan',
+                    animation: 'pulse 2s infinite',
+                }}
+            />
+            <div
+                onMouseEnter={() => setClue('gauge')}
+                onMouseLeave={() => setClue(null)}
+                style={{
+                    position: 'absolute',
+                    bottom: '15%',
+                    left: '25%',
+                    width: '30px',
+                    height: '30px',
+                    backgroundColor: 'rgba(255,0,255,0.1)',
+                    borderRadius: '50%',
+                    cursor: 'help',
+                    boxShadow: '0 0 8px magenta',
+                    animation: 'pulse 2s infinite',
+                }}
+            />
+
+            {/* Clue Display */}
+            {clue && (
+                <div
+                    style={{
+                        position: 'absolute',
+                        top: '5%',
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        padding: '1rem',
+                        backgroundColor: 'black',
+                        border: '1px solid lime',
+                        borderRadius: '8px',
+                        fontSize: '1rem',
+                        color: 'lime',
+                        zIndex: 10,
+                        maxWidth: '300px',
+                        textAlign: 'center',
+                        fontFamily: 'monospace'
+                    }}
+                >
+                    {clues[clue]}
+                </div>
+            )}
+
+            {/* Valve Sliders */}
             <div style={{ display: 'flex', gap: '2rem', marginBottom: '2rem' }}>
                 {[['Valve A', valveA, setValveA], ['Valve B', valveB, setValveB], ['Valve C', valveC, setValveC]].map(
                     ([label, value, setter]) => (
@@ -71,6 +154,7 @@ export default function VentOverride() {
                 )}
             </div>
 
+            {/* Pressure Gauge */}
             <div
                 style={{
                     position: 'relative',
@@ -111,23 +195,26 @@ export default function VentOverride() {
                 />
             </div>
 
+            {/* Buttons */}
             <div className="buttons">
-                <button className="button is-link mr-2" onClick={handleSubmit}>
-                    Submit
-                </button>
-                <button className="button is-light" onClick={handleReset}>
-                    Reset
-                </button>
+                <button className="button is-link mr-2" onClick={handleSubmit}>Submit</button>
+                <button className="button is-light" onClick={handleReset}>Reset</button>
             </div>
 
+            {/* Feedback */}
             {feedback && (
-                <div
-                    className="notification mt-4"
-                    style={{ color: feedback.includes('✅') ? 'lime' : 'red' }}
-                >
+                <div className="notification mt-4" style={{ color: feedback.includes('✅') ? 'lime' : 'red' }}>
                     {feedback}
                 </div>
             )}
+
+            <style>{`
+                @keyframes pulse {
+                    0% { transform: scale(1); opacity: 0.4; }
+                    50% { transform: scale(1.2); opacity: 1; }
+                    100% { transform: scale(1); opacity: 0.4; }
+                }
+            `}</style>
         </div>
     );
 }
