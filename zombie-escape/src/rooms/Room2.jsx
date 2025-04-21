@@ -53,16 +53,18 @@ export default function Room2() {
 
   return (
     <div
-      style={{
-        backgroundImage: `url(${background})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        height: '100vh',
-        width: '100vw',
-        position: 'relative',
-        overflow: 'hidden',
-        color: 'white',
-      }}
+          style={{
+              backgroundImage: `url(${background})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+              minHeight: '100vh',
+              width: '100%',
+              position: 'relative',
+              overflow: 'hidden',
+              color: 'white',
+              padding: '1rem',
+          }}
     >
       {/* Clue Hotspots */}
       <div onClick={() => setClue1(!clue1)} title="Wall Panel"

@@ -43,17 +43,15 @@ export default function Room5() {
         notebook: (
             <>
                 <strong>📓 Cure Formula Notebook:</strong><br />
-                CURE FORMULA v2.7<br />
-                Final line circled: ATG - ??? - CCT - ???
+                CURE FORMULA v2.7 worked<br />
+                Trial v2.6: ATG - GGA - CCT - TAA
             </>
         ),
         microscope: (
             <>
                 <strong>🔬 Microscope Display:</strong><br />
-                ATG → Start Codon<br />
-                GAC → Bonds with TAA in stable strains<br />
-                CCT → Repeats in non-mutated tissues<br />
-                CGT & GGA = "Abort"
+                ATG → Start Code<br />
+                CCT → Repeats in non-mutated tissues<br />"
             </>
         )
     };
@@ -84,7 +82,7 @@ export default function Room5() {
                     height: '30px',
                     borderRadius: '50%',
                     backgroundColor: 'rgba(255,255,0,0.1)',
-                    boxShadow: '0 0 6px rgba(255,255,0,0.4)',
+                    boxShadow: '0 0 7px rgba(255,255,0,0.4)',
                     animation: 'pulse 2s infinite',
                     cursor: 'help',
                 }}

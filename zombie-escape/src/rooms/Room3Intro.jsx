@@ -5,7 +5,8 @@ export default function Room3Intro() {
     const fullText = `  The quietest path leads to safety... You must sprint toward the ventilation ducts.
   Lock the ventilation duct behind you with: TWD10
   You begin crawling through the pitch-black ventilation shafts. Claustrophobic.
-  Scratches echo around you and then you see something so odd....`;
+  Scratches echo around you and then you see something so odd....
+  Remember a black light lets you see more`;
 
     const [displayedText, setDisplayedText] = useState('');
 

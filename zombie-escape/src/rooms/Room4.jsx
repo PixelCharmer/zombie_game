@@ -5,9 +5,9 @@ import background from '../assets/locker_room.png';
 
 const symbols = [
     { icon: '🔺', value: 'triangle' },
+    { icon: '⚪', value: 'circle' },
     { icon: '✖️', value: 'cross' },
     { icon: '◼️', value: 'square' },
-    { icon: '⚪', value: 'circle' },
     { icon: '🔷', value: 'diamond' },
     { icon: '⭐', value: 'star' },
 ];

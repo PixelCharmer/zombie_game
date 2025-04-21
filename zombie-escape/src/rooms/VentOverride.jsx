@@ -32,7 +32,7 @@ export default function VentOverride() {
     };
 
     const clues = {
-        note: '📝 6X + 37 + 4Z = Safety threshold?',
+        note: '📝 6X + 37 + Z3 = Safety threshold?',
         terminal: '⚠️ Pressure over 140 triggers purge!',
         gauge: '🔧 Mid-range valve stability around 40 PSI'
     };
@@ -54,7 +54,7 @@ export default function VentOverride() {
         >
             <h1 className="title is-3 has-text-success">🔧 Ventilation Override</h1>
             <p style={{ fontSize: '1.2rem', marginBottom: '1rem' }}>
-                Align the valves to change the flow of air
+                Change the air flow so the zombies can't detect your scent.'
             </p>
 
             {/* Hover Clue Zones */}
