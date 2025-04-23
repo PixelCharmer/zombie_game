@@ -6,6 +6,8 @@ const Keypad = ({ solution, maxAttempts, onSuccess, onFailure }) => {
     const [isLocked, setIsLocked] = useState(true);
     const [feedback, setFeedback] = useState('');
     const [isCorrect, setIsCorrect] = useState(false);
+    const [lockTimer, setLockTimer] = useState(false);
+    const [countdown, setCountdown] = useState(30);
 
     const handleNumberClick = useCallback((number) => {
         setEnteredCode((prev) => (prev + number).slice(0, solution.length));
@@ -28,12 +30,34 @@ const Keypad = ({ solution, maxAttempts, onSuccess, onFailure }) => {
             setEnteredCode('');
 
             if (nextAttempt >= maxAttempts) {
-                setIsLocked(true);
-                setFeedback('🔒 Too many attempts. Locked.');
+                setFeedback('🔒 Too many attempts. Locked for 30 seconds.');
+                setLockTimer(true);
+                setIsLocked(false); // Prevent input
+                setCountdown(30);
                 onFailure?.();
             }
         }
     }, [attempts, enteredCode, solution, maxAttempts, onSuccess, onFailure]);
+
+    useEffect(() => {
+        let timer;
+        if (lockTimer) {
+            timer = setInterval(() => {
+                setCountdown((prev) => {
+                    if (prev === 1) {
+                        clearInterval(timer);
+                        setIsLocked(true);
+                        setLockTimer(false);
+                        setAttempts(0);
+                        setFeedback('');
+                        return 30;
+                    }
+                    return prev - 1;
+                });
+            }, 1000);
+        }
+        return () => clearInterval(timer);
+    }, [lockTimer]);
 
     useEffect(() => {
         setEnteredCode('');
@@ -41,6 +65,8 @@ const Keypad = ({ solution, maxAttempts, onSuccess, onFailure }) => {
         setIsLocked(true);
         setFeedback('');
         setIsCorrect(false);
+        setLockTimer(false);
+        setCountdown(30);
     }, [solution, maxAttempts]);
 
     const keypadNumbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '', '0', '⌫'];
@@ -59,9 +85,8 @@ const Keypad = ({ solution, maxAttempts, onSuccess, onFailure }) => {
                 {keypadNumbers.map((num, idx) => (
                     <div key={idx} className="column is-one-third p-1">
                         <button
-                            className={`button is-fullwidth is-medium ${num === '⌫' ? 'is-danger' : 'is-info'
-                                }`}
-                            disabled={!isLocked && num !== '⌫'}
+                            className={`button is-fullwidth is-medium ${num === '⌫' ? 'is-danger' : 'is-info'}`}
+                            disabled={!isLocked || lockTimer}
                             onClick={() => {
                                 if (num === '⌫') {
                                     handleDeleteClick();
@@ -77,9 +102,8 @@ const Keypad = ({ solution, maxAttempts, onSuccess, onFailure }) => {
             </div>
 
             <button
-                className={`button is-fullwidth is-medium ${isCorrect ? 'is-success' : 'is-primary'
-                    }`}
-                disabled={!isLocked || enteredCode.length !== solution.length}
+                className={`button is-fullwidth is-medium ${isCorrect ? 'is-success' : 'is-primary'}`}
+                disabled={!isLocked || enteredCode.length !== solution.length || lockTimer}
                 onClick={handleSubmitClick}
             >
                 {isCorrect ? '✔️ Unlock' : 'Submit'}
@@ -88,6 +112,12 @@ const Keypad = ({ solution, maxAttempts, onSuccess, onFailure }) => {
             {feedback && (
                 <p className={`mt-3 has-text-${isCorrect ? 'success' : 'danger'}`}>
                     {feedback}
+                </p>
+            )}
+
+            {lockTimer && (
+                <p className="mt-2 has-text-warning">
+                    ⏳ Locked: {countdown} seconds remaining
                 </p>
             )}
 

@@ -40,15 +40,15 @@ export default function GameEntry() {
                 <p style={{ fontSize: '1.2rem', marginBottom: '2rem' }}>
                     The world has been overrun by the undead. A virus known as ZMB-17 wiped out civilization in weeks.
                     Your group are the last known surviors. You must find the cure hidden deep within the last standing research facility, Outpost ECHO-7.<br /><br />
-                    <em>Time is running out.</em> The buildings self-destruct system was activated by the infected AI.
-                    You must navigate 5 zones and retrieve the cure before the countdown ends or become one.
+                    Time is running out.The building's self-destruct system was activated by the undead.
+                    You must navigate these zones and retrieve the cure before the countdown ends or become infected.
                 </p>
                 <button
                     className="button is-link is-large"
                     onClick={handleStart}
                     style={{ fontWeight: 'bold' }}
                 >
-                    Start Game
+                    Enter the Outpost
                 </button>
             </div>
         </div>

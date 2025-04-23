@@ -32,8 +32,8 @@ export default function VentOverride() {
     };
 
     const clues = {
-        note: '📝 6X + 37 + Z3 = Safety threshold?',
-        terminal: '⚠️ Pressure over 140 triggers purge!',
+        note: '📝 60 + 37 + _3 = Safety threshold?',
+        terminal: '⚠️ Pressure over 150 triggers purge!',
         gauge: '🔧 Mid-range valve stability around 40 PSI'
     };
 

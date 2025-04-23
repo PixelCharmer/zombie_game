@@ -14,7 +14,7 @@ const Room1 = () => {
 
     const hintMessages = [
         'Ends are lies, the truth is always first',
-        'What number is that letter',
+        'What number is the first letter',
         'Letters need numbers & numbers stay the same',
         'Indigo 3  Blue 7'
     ];
@@ -44,13 +44,13 @@ const Room1 = () => {
                 onClick={() => setShowPuzzle(true)}
                 style={{
                     position: 'absolute',
-                    top: '32vh',
-                    right: '12vw',
-                    width: 'clamp(40px, 5vw, 60px)',
+                    top: '27vh',
+                    right: '15vw',
+                    width: 'clamp(10px, 5vw, 30px)',
                     height: 'clamp(40px, 5vw, 60px)',
                     cursor: 'pointer',
                     borderRadius: '12px',
-                    boxShadow: '0 0 20px rgba(0,255,255,0.3)',
+                    boxShadow: '0 0 10px rgba(0,255,255,0.3)',
                     backgroundColor: 'rgba(0,255,255,0.1)',
                     zIndex: 10
                 }}
@@ -60,10 +60,10 @@ const Room1 = () => {
             {/* Broken Radio Zone */}
             <div
                 onClick={playNextHint}
-                title="Click to hear static clues"
+                title="Click to see static clues"
                 style={{
                     position: 'absolute',
-                    top: '60vh',
+                    top: '45vh',
                     left: '10vw',
                     width: 'clamp(200px, 25vw, 300px)',
                     height: 'clamp(50px, 8vh, 100px)',
@@ -76,7 +76,7 @@ const Room1 = () => {
             <div
                 style={{
                     position: 'absolute',
-                    top: '70vh',
+                    top: '53vh',
                     left: '10vw',
                     width: 'clamp(250px, 30vw, 400px)',
                     color: '#f7dcf0',

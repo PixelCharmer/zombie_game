@@ -9,7 +9,7 @@ export default function EscapeEnding() {
             <p>Infection containment initiated... Humanity has a chance.</p>
             <p style={{ animationDelay: '4s' }}>Enter the cure sequence: WE LIVE!.</p>
             <p style={{ animationDelay: '4s' }}>Hope you enjoyed this experience!.</p>
-            <p style={{ animationDelay: '4s' }}>Created and Codedd by Kari Alcoset!.</p>
+            <p style={{ animationDelay: '4s' }}>Created and Coded by Kari Alcoset!.</p>
         </div>
     );
 }
