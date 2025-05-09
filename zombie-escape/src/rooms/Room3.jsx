@@ -1,75 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import background from '../assets/tunnelsystem.png';
 
 export default function Room3() {
     const navigate = useNavigate();
-
-    const symbols = ['🜁', '🜂', '🜃']; // Air, Fire, Earth (real answers)
-    const allSymbols = ['🜁', '🜂', '🜃', '🜄', '🜔']; // With decoys: Water, Spirit
-
-    const symbolMap = {
-        'Tunnel 1': '🜁',
-        'Tunnel 2': '🜂',
-        'Tunnel 3': '🜃'
-    };
-
-    const riddleSets = {
-        '🜁': [
-            'The way that carries without touch.',
-            'No weight, yet shapes all things.',
-            'The whisper is stronger than the roar.'
-        ],
-        '🜂': [
-            'Flickers in fury, consumes in haste.',
-            'Only fools chase warmth in war.',
-            'The breath of destruction.'
-        ],
-        '🜃': [
-            'Where motion dies, life lingers.',
-            'Still and cold, the quiet grave.',
-            'Rooted in finality.'
-        ]
-    };
-
-    const [selectedTunnel, setSelectedTunnel] = useState('');
+    const [inputValue, setInputValue] = useState('');
     const [submitted, setSubmitted] = useState(false);
     const [correct, setCorrect] = useState(false);
-    const [blacklightActive, setBlacklightActive] = useState(false);
-    const [collectedClues, setCollectedClues] = useState([]);
-    const [shuffledRiddles, setShuffledRiddles] = useState([]);
+    const [showRiddle, setShowRiddle] = useState(false);
 
-    const correctSymbol = useState(() => symbols[Math.floor(Math.random() * symbols.length)])[0];
-    const correctTunnel = Object.entries(symbolMap).find(([_, symbol]) => symbol === correctSymbol)[0];
-
-    useEffect(() => {
-        const clues = [...riddleSets[correctSymbol]].sort(() => Math.random() - 0.5);
-        setShuffledRiddles(clues);
-    }, [correctSymbol]);
-
-    const handleClueCollect = (index) => {
-        if (blacklightActive && collectedClues.length < 3) {
-            const clue = shuffledRiddles[index];
-            if (!collectedClues.includes(clue)) {
-                setCollectedClues((prev) => [...prev, clue]);
-            }
-        }
+    const handleChange = (e) => {
+        const upper = e.target.value.toUpperCase();
+        setInputValue(upper);
     };
 
     const handleSubmit = () => {
         setSubmitted(true);
-        if (selectedTunnel === correctTunnel) {
+        if (inputValue === 'DARKNESS') {
             setCorrect(true);
             setTimeout(() => navigate('/ventoverride'), 2500);
         }
     };
 
     const handleReset = () => {
-        setSelectedTunnel('');
+        setInputValue('');
         setSubmitted(false);
         setCorrect(false);
-        setBlacklightActive(false);
-        setCollectedClues([]);
     };
 
     return (
@@ -81,55 +37,65 @@ export default function Room3() {
             width: '100vw',
             position: 'relative',
             color: 'white',
-            overflow: 'hidden'
+            overflow: 'hidden',
+            fontFamily: 'serif'
         }}>
-            <div style={{ position: 'absolute', top: '5%', left: '10%', width: '80%', backgroundColor: 'rgba(0,0,0,0.5)', padding: '1rem', borderRadius: '8px' }}>
-                <button className="button is-warning is-small" onClick={() => setBlacklightActive(true)}>
-                    Power on Blacklight Scanner
-                </button>
-            </div>
-
-            {blacklightActive && (
-                <>
-                    {[0, 1, 2].map((index) => (
-                        <div key={index}>
-                            <div
-                                onClick={() => handleClueCollect(index)}
-                                style={{
-                                    position: 'absolute',
-                                    top: '35%',
-                                    left: `${15 + index * 28}%`,
-                                    width: '20px',
-                                    height: '60px',
-                                    borderRadius: '10px',
-                                    cursor: 'pointer',
-                                    animation: 'pulse 2s infinite'
-                                }}
-                            />
-                        </div>
-                    ))}
-                </>
-            )}
-
-            {collectedClues.length > 0 && (
+            {/* Riddle Reveal Button */}
+            {!showRiddle && (
                 <div style={{
                     position: 'absolute',
-                    top: '10%',
-                    right: '5%',
-                    width: '300px',
-                    background: 'rgba(0, 0, 0, 0.75)',
-                    padding: '1rem',
-                    border: '1px solid cyan',
-                    fontSize: '0.9rem'
+                    top: '5%',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    zIndex: 10
                 }}>
-                    <ul>
-                        {collectedClues.map((clue, index) => (
-                            <li key={index} style={{ marginBottom: '0.5rem' }}>{clue}</li>
-                        ))}
-                    </ul>
+                    <button
+                        className="button is-info is-light is-medium"
+                        onClick={() => setShowRiddle(true)}
+                    >
+                        Reveal Riddle
+                    </button>
                 </div>
             )}
 
+            {/* Riddle Box */}
+            {showRiddle && (
+                <div style={{
+                    position: 'absolute',
+                    top: '5%',
+                    left: '10%',
+                    width: '80%',
+                    backgroundColor: 'rgba(0,0,0,0.7)',
+                    padding: '2rem',
+                    borderRadius: '12px',
+                    border: '1px solid cyan',
+                    fontSize: '1.1rem',
+                    lineHeight: '1.6',
+                    textAlign: 'center',
+                    color: '#e0e0ff'
+                }}>
+                    <p><strong>Three mouths gape wide, but none with breath.</strong><br />
+                        One murmurs warnings dressed in flame—fear’s breathless lullaby.<br />
+                        Another hums in emerald certainty, cloaked in the arrogance of symmetry.<br />
+                        The last drips cobalt truths through broken teeth, where shadow sharpens lies into prophecy.</p>
+
+                    <br />
+
+                    <p><strong>Red will still your lungs before your mind.<br />
+                        Green bends the compass until false North feels right.<br />
+                        Blue sings riddles backward in the dark—half a truth is still a lie.</strong></p>
+
+                    <br />
+
+                    <p><em>To pass, you must choose not by light, nor fear, nor faith...<br />
+                        But by the one who hides what matters most.<br />
+                        Only in silence is the answer heard.<br />
+                        Only in darkness is the truth revealed.<br />
+                        Only in deception can you survive.</em></p>
+                </div>
+            )}
+
+            {/* Input and buttons */}
             <div style={{
                 position: 'absolute',
                 bottom: '5%',
@@ -141,24 +107,27 @@ export default function Room3() {
                 alignItems: 'center',
                 gap: '1rem'
             }}>
-                <div className="select is-medium">
-                    <select value={selectedTunnel} onChange={(e) => setSelectedTunnel(e.target.value)}>
-                        <option value="" disabled>Select a Symbol</option>
-                        {allSymbols.map((symbol, index) => {
-                            const tunnelEntry = Object.entries(symbolMap).find(([_, sym]) => sym === symbol);
-                            const tunnelValue = tunnelEntry ? tunnelEntry[0] : `decoy-${index}`;
-                            return (
-                                <option key={symbol} value={tunnelValue}>{symbol}</option>
-                            );
-                        })}
-                    </select>
-                </div>
-
+                <input
+                    type="text"
+                    value={inputValue}
+                    onChange={handleChange}
+                    placeholder="ENTER YOUR ANSWER"
+                    style={{
+                        textTransform: 'uppercase',
+                        fontSize: '1.5rem',
+                        padding: '0.5rem 1rem',
+                        border: '2px solid white',
+                        borderRadius: '5px',
+                        backgroundColor: 'rgba(0,0,0,0.6)',
+                        color: 'white',
+                        width: '300px',
+                        textAlign: 'center'
+                    }}
+                />
                 <div className="buttons">
                     <button className="button is-link is-medium" onClick={handleSubmit}>Submit</button>
                     <button className="button is-warning is-light ml-3" onClick={handleReset}>Reset</button>
                 </div>
-
                 {submitted && correct && (
                     <div className="notification is-success mt-3">
                         ✅ You chose wisely. You vanish into the dark...
@@ -170,14 +139,6 @@ export default function Room3() {
                     </div>
                 )}
             </div>
-
-            <style>{`
-        @keyframes pulse {
-          0% { box-shadow: 0 0 5px rgba(255,255,255,0.2); }
-          50% { box-shadow: 0 0 15px rgba(0,255,255,0.6); }
-          100% { box-shadow: 0 0 5px rgba(255,255,255,0.2); }
-        }
-      `}</style>
         </div>
     );
 }

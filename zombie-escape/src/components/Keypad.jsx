@@ -1,6 +1,6 @@
 ﻿import React, { useState, useEffect, useCallback } from 'react';
 
-const Keypad = ({ solution, maxAttempts, onSuccess, onFailure }) => {
+const Keypad = ({ solution, maxAttempts, onSuccess, onFailure, onLockChange }) => {
     const [enteredCode, setEnteredCode] = useState('');
     const [attempts, setAttempts] = useState(0);
     const [isLocked, setIsLocked] = useState(true);
@@ -32,7 +32,7 @@ const Keypad = ({ solution, maxAttempts, onSuccess, onFailure }) => {
             if (nextAttempt >= maxAttempts) {
                 setFeedback('🔒 Too many attempts. Locked for 30 seconds.');
                 setLockTimer(true);
-                setIsLocked(false); // Prevent input
+                setIsLocked(false);
                 setCountdown(30);
                 onFailure?.();
             }
@@ -68,6 +68,13 @@ const Keypad = ({ solution, maxAttempts, onSuccess, onFailure }) => {
         setLockTimer(false);
         setCountdown(30);
     }, [solution, maxAttempts]);
+
+    // Notify parent of lock state
+    useEffect(() => {
+        if (onLockChange) {
+            onLockChange(!lockTimer); // true = can close
+        }
+    }, [lockTimer, onLockChange]);
 
     const keypadNumbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '', '0', '⌫'];
 
