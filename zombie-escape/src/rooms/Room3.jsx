@@ -74,24 +74,31 @@ export default function Room3() {
                     textAlign: 'center',
                     color: '#e0e0ff'
                 }}>
-                    <p><strong>Three mouths gape wide, but none with breath.</strong><br />
-                        One murmurs warnings dressed in flame—fear’s breathless lullaby.<br />
-                        Another hums in emerald certainty, cloaked in the arrogance of symmetry.<br />
-                        The last drips cobalt truths through broken teeth, where shadow sharpens lies into prophecy.</p>
+                    <p>The horde is near, their growls grow loud,<br />
+                        One wrong move and you'll be found.<br />
+                        Three tunnels wait — red, green, and blue —
+                    </p>
 
                     <br />
 
-                    <p><strong>Red will still your lungs before your mind.<br />
+                    <p>One tunnel burns, a beacon red, <br />
+                        A flare that calls the walking dead. <br />
+                        Another boasts of "righteous" ways, <br />
+                        But pride won't help you dodge the grave. <br />
+                        The third is cold, and nothing shows — <br />
+                        Just stillness where no danger grows. <br />
+                    </p>
+
+                    <p>Red will still your lungs before your mind.<br />
                         Green bends the compass until false North feels right.<br />
-                        Blue sings riddles backward in the dark—half a truth is still a lie.</strong></p>
+                        Blue sings riddles backward in the dark — half a truth is still a lie
+                    </p>
 
                     <br />
 
-                    <p><em>To pass, you must choose not by light, nor fear, nor faith...<br />
+                    <p>To pass, you must choose not by light, nor fear, nor faith...<br />
                         But by the one who hides what matters most.<br />
-                        Only in silence is the answer heard.<br />
-                        Only in darkness is the truth revealed.<br />
-                        Only in deception can you survive.</em></p>
+                    </p>
                 </div>
             )}
 
