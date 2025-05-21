@@ -118,7 +118,7 @@ export default function Room3() {
                     type="text"
                     value={inputValue}
                     onChange={handleChange}
-                    placeholder="ENTER YOUR ANSWER"
+                    placeholder="ENTER THE WORD"
                     style={{
                         textTransform: 'uppercase',
                         fontSize: '1.5rem',
