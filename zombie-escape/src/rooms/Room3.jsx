@@ -96,7 +96,7 @@ export default function Room3() {
 
                     <br />
 
-                    <p>To pass, you must choose not by light, nor fear, nor faith...<br />
+                    <p>To pass, you must choose the word not by light, nor fear, nor faith...<br />
                         But by the one who hides what matters most.<br />
                     </p>
                 </div>
